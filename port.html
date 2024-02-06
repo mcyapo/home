@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Five Card Images Slideshow</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            padding: 60px 20px 20px;
+            display: flex;
+            justify-content: flex-start; /* Align images to the left */
+            position: relative;
+        }
+
+        .card-img {
+            position: relative;
+            height: auto;
+            max-height: 300px;
+            max-width: 100%;
+            margin-bottom: 0;
+            margin-left: 20px; /* Add left margin to move the image to the right */
+            transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), border-color 0.3s, filter 0.3s, box-shadow 0.3s; /* Added box-shadow transition */
+            border: none;
+            border-radius: 5px;
+            filter: grayscale(100%) sepia(100%) hue-rotate(180deg) saturate(400%) brightness(100%) contrast(100%) sepia(0%) saturate(100%) hue-rotate(120deg);
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Initial box-shadow */
+            cursor: pointer; /* Change cursor to pointer on hover */
+        }
+
+        .card-img:hover {
+            box-shadow: 0 0 5px rgba(173, 216, 230, 0.5),
+                        0 0 5px rgba(173, 216, 230, 0.5),
+                        0 0 15px rgba(173, 216, 230, 0.5);
+            transform: scale(1.05);
+            filter: none;
+        }
+
+        .card-img:nth-child(odd):hover {
+            transform: scale(1.05) rotate(-5deg);
+        }
+
+        .card-img:nth-child(even):hover {
+            transform: scale(1.05) rotate(5deg);
+        }
+
+        .image-overlay {
+            position: absolute;
+            top: 80%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-family: 'Irrational-X3e0o', Arial, sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .container:hover .card-img:hover + .image-overlay {
+            opacity: 1;
+        }
+
+        /* Add styles for the text outside the frame */
+        .outside-text {
+            position: absolute;
+            top: 20px; /* Adjust top margin as needed */
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 18px; /* Adjust font size as needed */
+            font-weight: bold;
+            color: white;
+            opacity: 1;
+            transition: opacity 0.3s ease-in-out;
+            background: linear-gradient(to right, #ff105f, #ffad06);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
+
+        .container:hover .outside-text {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- First Image -->
+    <img src="https://i.imgur.com/q2CvpVu.jpg" class="card-img" onclick="scrollToTop()">
+    <div class="image-overlay">Pencil Drawings</div>
+        
+    <!-- Second Image (Duplicate) -->
+    <img src="https://i.imgur.com/q2CvpVu.jpg" class="card-img" style="display: none;">
+    <div class="image-overlay" style="display: none;">Pencil Drawings</div>
+    
+    <!-- Third Image -->
+    <img src="https://i.imgur.com/uPwoMnI.jpg" class="card-img" style="margin-left: 20px;">
+    <div class="image-overlay">Pencil Drawings</div>
+        
+    <!-- Fourth Image (Duplicate) -->
+    <img src="https://i.imgur.com/uPwoMnI.jpg" class="card-img" style="display: none; margin-left: 20px;">
+    <div class="image-overlay" style="display: none;">Pencil Drawings</div>
+</div>
+
+<!-- Text outside the frame -->
+<div class="outside-text">ILLUSTRATIONS</div>
+
+<script>
+    // Select images
+    var images = document.querySelectorAll('.card-img');
+    var overlays = document.querySelectorAll('.image-overlay');
+
+    // Set initial index and show first image
+    var currentIndex = 0;
+    images[currentIndex].style.display = 'block';
+    overlays[currentIndex].style.display = 'block';
+
+    // Function to show next image
+    function showNextImage() {
+        images[currentIndex].style.display = 'none';
+        overlays[currentIndex].style.display = 'none';
+        currentIndex = (currentIndex + 1) % images.length;
+        images[currentIndex].style.display = 'block';
+        overlays[currentIndex].style.display = 'block';
+    }
+
+    // Set interval for slideshow effect
+    setInterval(showNextImage, 3000); // Change every 1 second
+
+    // Function to scroll to the top of the page
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>

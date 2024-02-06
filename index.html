@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Parallax effect for Section 1 and 2 */
+        .parallax-container {
+            background-image: url('Assets/iStock-1423659469.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 300vh; /* Adjust the height as needed */
+            display: flex;
+            flex-direction: column;
+            color: white;
+            text-align: center;
+        }
+
+        /* Section 2 without Parallax */
+        .section2 {
+            background-image: url('Assets/iStock-486438046.jpg');
+            height: 120vh; /* Adjust the height as needed */
+            display: flex;
+            justify-content: center; /* Center items horizontally */
+            align-items: flex-start; /* Align items at the start of the flex container */
+            color: white;
+            text-align: center;
+            padding: 5px 0; /* Add padding to center content vertically */
+            gap: 20px; /* Add gap between images */
+        }
+
+        /* Section 2 image styles */
+        .section2 img {
+            width: 252px; /* Set width to 272px */
+            height: 463px; /* Set height to 483px */
+            border-radius: 10px; /* Add border radius to images */
+            margin: 100px 50px 0; /* Add margin to the top, left, and right */
+            transition: transform 0.3s; /* Add transition for smooth effect */
+            cursor: pointer; /* Add cursor pointer for clickable effect */
+        }
+
+        /* Hover effect for images */
+        .section2 img:hover {
+            transform: scale(0.9) rotate(5deg); /* Scale down to 90% of original size and rotate 5 degrees */
+        }
+
+        /* Section 1 content */
+        .section1-content {
+            height: 100vh; /* Adjust the height as needed */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: #333; /* Dark background color for the footer */
+            color: white;
+            text-align: center;
+            padding: 20px 0; /* Add padding to top and bottom */
+        }
+
+        /* Navigation styles */
+        .navigation {
+            padding: 20px 0; /* Add padding to top and bottom */
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Parallax container for Section 1 and 2 -->
+    <div class="parallax-container">
+        <!-- Section 1 with Parallax -->
+        <div class="section1-content">
+            <h1>Welcome to My Website</h1>
+            <p>This is a simple website with a parallax effect.</p>
+        </div>
+
+        <!-- Section 2 without Parallax -->
+        <div class="section2" id="section2">
+            <!-- Card Images -->
+            <a href="port.html">
+                <img src="Assets/35287270_1672367139479087_4320335387189837824_n.jpg" alt="Card 1" onmouseover="changeBackground('Assets/BG02@4x.png')" onmouseout="resetBackground()">
+            </a>
+            <img src="Assets/Protein Bars A+.png" alt="Card 2" onmouseover="changeBackground('Assets/BG03@4x.png')" onmouseout="resetBackground()">
+            <img src="Assets/35287270_1672367139479087_4320335387189837824_n.jpg" alt="Card 3" onmouseover="changeBackground('Assets/BG04@4x.png')" onmouseout="resetBackground()">
+            <img src="Assets/35287270_1672367139479087_4320335387189837824_n.jpg" alt="Card 4" onmouseover="changeBackground('Assets/BG05@4x.png')" onmouseout="resetBackground()">
+        </div>
+    </div>
+
+    <!-- GIF image on top of footer -->
+    <img src="Assets/Comp 1_1.gif" alt="GIF Image" style="width: 100%; max-width: 100%;">
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Your Website. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function changeBackground(imageUrl) {
+            document.getElementById('section2').style.backgroundImage = `url(${imageUrl})`;
+        }
+
+        function resetBackground() {
+            document.getElementById('section2').style.backgroundImage = "url('Assets/iStock-486438046.jpg')";
+        }
+    </script>
+</body>
+</html>
